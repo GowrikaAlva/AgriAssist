@@ -1,8 +1,10 @@
-// Sidebar.tsx
+// src/components/layout/Sidebar.tsx
+
 import Link from 'next/link';
 
 interface SidebarProps {
-  activeRoute: 'dashboard' | 'market' | 'chatbot';
+  // Add 'health' to the union type
+  activeRoute: 'dashboard' | 'market' | 'chatbot' | 'health'; 
 }
 
 export default function Sidebar({ activeRoute }: SidebarProps) {
@@ -22,6 +24,10 @@ export default function Sidebar({ activeRoute }: SidebarProps) {
         </Link>
         <Link href="/market" className={linkClass('market')}>
           Market Insights
+        </Link>
+        {/* NEW LINK ADDED */}
+        <Link href="/health" className={linkClass('health')}>
+          Crop Health
         </Link>
         <Link href="/chatbot" className={linkClass('chatbot')}>
           AI Chatbot
