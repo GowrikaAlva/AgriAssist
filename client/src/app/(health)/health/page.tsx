@@ -18,8 +18,7 @@ export default function CropHealthPage() {
         style={{
           backgroundImage: "url('/images/bg-farm.jpg')",
           backgroundSize: 'cover',
-          // 💡 STRONGER CHANGE HERE: Set horizontal position to 70%
-          backgroundPosition: '70% center', 
+          backgroundPosition: '70% center',
           backgroundAttachment: 'fixed',
         }}
       >
@@ -66,33 +65,36 @@ export default function CropHealthPage() {
                     🌿 Best Practice Guidelines
                   </h3>
 
-                  <ul className="list-none space-y-5 text-[#2F1F0F] font-semibold leading-relaxed drop-shadow-sm">
-  <li className="flex items-start">
-    <span className="text-[#4C7C4C] font-extrabold text-2xl mr-3 leading-none">•</span>
-    <span>
-      <b>Clarity First:</b> Take a clear, focused photo of a single affected leaf for accurate analysis.
-    </span>
-  </li>
-  <li className="flex items-start">
-    <span className="text-[#4C7C4C] font-extrabold text-2xl mr-3 leading-none">•</span>
-    <span>
-      <b>Lighting:</b> Use natural light and avoid shadows or flash glare.
-    </span>
-  </li>
-  <li className="flex items-start">
-    <span className="text-[#4C7C4C] font-extrabold text-2xl mr-3 leading-none">•</span>
-    <span>
-      <b>File Size:</b> Keep photo under 2MB for faster uploads.
-    </span>
-  </li>
-  <li className="flex items-start">
-    <span className="text-[#4C7C4C] font-extrabold text-2xl mr-3 leading-none">•</span>
-    <span>
-      <b>Coverage:</b> Works best for common pests and diseases in your crop region.
-    </span>
-  </li>
-</ul>
+                  <ul className="list-none space-y-6 text-[#2F1F0F] font-semibold leading-relaxed drop-shadow-sm text-lg">
+                    <li className="flex items-start">
+                      <span className="text-[#4C7C4C] font-extrabold text-3xl mr-3 leading-none">•</span>
+                      <span>
+                        <b>Clarity First:</b> Take a clear, focused photo of a single affected leaf for accurate
+                        analysis.
+                      </span>
+                    </li>
 
+                    <li className="flex items-start">
+                      <span className="text-[#4C7C4C] font-extrabold text-3xl mr-3 leading-none">•</span>
+                      <span>
+                        <b>Lighting:</b> Use natural light and avoid shadows or flash glare.
+                      </span>
+                    </li>
+
+                    <li className="flex items-start">
+                      <span className="text-[#4C7C4C] font-extrabold text-3xl mr-3 leading-none">•</span>
+                      <span>
+                        <b>File Size:</b> Keep the photo under 2MB for faster uploads and smoother processing.
+                      </span>
+                    </li>
+
+                    <li className="flex items-start">
+                      <span className="text-[#4C7C4C] font-extrabold text-3xl mr-3 leading-none">•</span>
+                      <span>
+                        <b>Coverage:</b> Works best for common pests and diseases in your crop region.
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
