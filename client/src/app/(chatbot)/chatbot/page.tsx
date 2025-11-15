@@ -7,6 +7,7 @@ import { ChatMessage } from '@/lib/types';
 import Sidebar from '@/components/layout/Sidebar';
 import Navbar from '@/components/layout/Navbar';
 import { saveCurrentChat, loadChatSession, startNewChat as startNewChatStorage } from '@/lib/chatStorage';
+import { useLanguage } from '@/lib/languageContext';
 
 // Function to format AI responses with basic markdown support
 const formatMessage = (text: string) => {
@@ -21,6 +22,7 @@ const formatMessage = (text: string) => {
 };
 
 export default function ChatbotPage() {
+  const { t, language } = useLanguage();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -34,17 +36,17 @@ export default function ChatbotPage() {
       {
         id: '1',
         sender: 'ai',
-        text: 'Hello! I\'m AgriAssist, your AI farming assistant. How can I help you today?',
+        text: t('helloAssistant'),
         timestamp: Date.now(),
       },
     ];
     setMessages(initialMessages);
     setCurrentChatId(startNewChatStorage());
-  }, []);
+  }, [t]);
 
   // Save current chat whenever messages change
   useEffect(() => {
-    if (messages.length > 1) { // Don't save initial message
+    if (messages.length > 1) { 
       saveCurrentChat(messages);
     }
   }, [messages]);
@@ -77,7 +79,7 @@ export default function ChatbotPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMessage.text }),
+        body: JSON.stringify({ message: userMessage.text, language }),
       });
 
       if (!response.ok) {
@@ -113,7 +115,7 @@ export default function ChatbotPage() {
       {
         id: '1',
         sender: 'ai',
-        text: 'Hello! I\'m AgriAssist, your AI farming assistant. How can I help you today?',
+        text: t('helloAssistant'),
         timestamp: Date.now(),
       },
     ];
@@ -154,7 +156,7 @@ export default function ChatbotPage() {
         currentChatId={currentChatId}
       />
       <div className="ml-80 flex-1 flex flex-col">
-        <Navbar title="AgriAssist Chatbot" />
+        <Navbar title="AgriAssist Chatbot" showLanguageSelector={true} />
         <main className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto">
           <div className="bg-white rounded-lg shadow-2xl border border-gray-200 min-h-[500px] sm:min-h-[600px] flex flex-col">
             {/* Header */}
@@ -230,7 +232,7 @@ export default function ChatbotPage() {
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask about farming..."
+                  placeholder={t('askAboutFarming')}
                   className="flex-1 p-3 border border-gray-300 rounded-lg text-sm text-black focus:outline-none focus:ring-2 focus:ring-green-500"
                   disabled={isLoading}
                 />

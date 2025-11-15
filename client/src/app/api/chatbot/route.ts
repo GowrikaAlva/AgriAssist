@@ -9,7 +9,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 // Handles POST requests to /api/chatbot
 export async function POST(request: Request) {
   try {
-    const { message } = await request.json();
+    const { message, language } = await request.json();
 
     if (!message) {
       return new NextResponse(JSON.stringify({ message: 'Message is required' }), { status: 400 });
@@ -18,8 +18,8 @@ export async function POST(request: Request) {
     // Get the generative model
     const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
-    // Define the system prompt
-    const systemPrompt = "You are AgriAssist, an expert agricultural advisor. Answer all questions concisely in a helpful, friendly tone, focusing on farming advice.";
+    // Define the system prompt with language instruction
+    const systemPrompt = `You are AgriAssist, an expert agricultural advisor. Answer all questions concisely in a helpful, friendly tone, focusing on farming advice. Respond in ${language} language.`;
 
     // Generate content
     const result = await model.generateContent([
