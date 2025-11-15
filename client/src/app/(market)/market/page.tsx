@@ -255,10 +255,20 @@ export default function MarketPage() {
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Current Market Prices
               </h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={filteredCommodities}>
+              <ResponsiveContainer width="100%" height={350}>
+                <BarChart
+                  data={filteredCommodities}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
+                >
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis dataKey="name" stroke="#6b7280" />
+                  <XAxis
+                    dataKey="name"
+                    stroke="#6b7280"
+                    angle={-45}
+                    textAnchor="end"
+                    interval={0}
+                    height={80}
+                  />
                   <YAxis stroke="#6b7280" />
                   <Tooltip
                     contentStyle={{
@@ -373,21 +383,21 @@ export default function MarketPage() {
 
           {/* Market Insights */}
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-linear-to-br from-green-500 to-green-600 rounded-xl p-6 text-white">
+            <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white">
               <div className="text-3xl mb-2">📈</div>
               <h4 className="font-semibold text-lg mb-1">Best Sellers</h4>
               <p className="text-green-100 text-sm">
                 Rice & Cotton showing strong demand
               </p>
             </div>
-            <div className="bg-linear-to-br from-yellow-500 to-yellow-600 rounded-xl p-6 text-white">
+            <div className="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl p-6 text-white">
               <div className="text-3xl mb-2">💡</div>
               <h4 className="font-semibold text-lg mb-1">Market Tip</h4>
               <p className="text-yellow-100 text-sm">
                 Consider selling onions - prices up 12%
               </p>
             </div>
-            <div className="bg-linear-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white">
               <div className="text-3xl mb-2">🌾</div>
               <h4 className="font-semibold text-lg mb-1">Season Update</h4>
               <p className="text-blue-100 text-sm">
