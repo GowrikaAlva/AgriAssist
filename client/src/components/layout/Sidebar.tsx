@@ -104,7 +104,7 @@ export default function Sidebar({ activeRoute, onChatSelect, currentChatId }: Si
           {isChatHistoryExpanded && (
             <div className="space-y-2">
               {chatSessions.length === 0 ? (
-                <p className="text-gray-400 text-sm">No chat history yet</p>
+                <p className="text-gray-400 text-sm">No chat history</p>
               ) : (
                 chatSessions.map((session) => (
                   <div

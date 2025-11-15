@@ -1,7 +1,7 @@
 // Use this directive to make it a Client Component
-'use client'; 
+'use client';
 
-import { DashboardCard } from '@/components/dashboard/DashboardCard'; 
+import { DashboardCard } from '@/components/dashboard/DashboardCard';
 import { PriceChart } from '@/components/charts/PriceChart';
 import { YieldPredictorChart } from '@/components/charts/YieldPredictorChart';
 import Sidebar from '@/components/layout/Sidebar';
@@ -18,11 +18,11 @@ export default function DashboardPage() {
   return (
     <div className="flex">
       <Sidebar activeRoute="dashboard" />
-      <div className="flex-1">
-        <Navbar title="Dashboard Overview" />
+      <div className="flex-1 ml-80">
+        <Navbar title="Dashboard Overview" showLanguageSelector={false} />
         <main className="p-6 md:p-8">
           <h2 className="text-3xl font-semibold mb-6 text-gray-800">Analytics Summary</h2>
-          
+
           {/* Stats Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {stats.map((stat) => (
