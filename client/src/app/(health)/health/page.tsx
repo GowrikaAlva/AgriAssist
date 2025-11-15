@@ -14,7 +14,7 @@ export default function CropHealthPage() {
 
       {/* Background Image Container */}
       <div
-        className="flex-1 min-h-screen relative"
+        className="flex-1 min-h-screen relative ml-80"
         style={{
           backgroundImage: "url('/images/bg-farm.jpg')",
           backgroundSize: 'cover',
@@ -24,7 +24,7 @@ export default function CropHealthPage() {
       >
         {/* Page Content */}
         <div className="relative z-10">
-          <Navbar title="Crop Health Analyzer" />
+          <Navbar title="Crop Health Analyzer" showLanguageSelector={false} />
 
           <main className="p-6 md:p-10">
             {/* Main Heading */}

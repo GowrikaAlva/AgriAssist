@@ -1,4 +1,3 @@
-// Use this directive to make it a Client Component
 'use client';
 
 // Import useState and useEffect
@@ -66,7 +65,7 @@ const getSoilAdvice = (soil: SoilType, forecast: ForecastItem | null) => {
 export default function DashboardPage() {
   const [forecast, setForecast] = useState<ForecastItem[] | null>(null);
   const [loading, setLoading] = useState('location');
-  
+
   // --- NEW ---
   // Add state for the selected soil type
   const [soilType, setSoilType] = useState<SoilType>('unknown');
@@ -133,7 +132,7 @@ export default function DashboardPage() {
   const handleSoilChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSoilType(e.target.value as SoilType);
   };
-  
+
   // --- NEW ---
   // Get the dynamic advice
   const soilAdvice = getSoilAdvice(soilType, currentWeather);
@@ -141,12 +140,16 @@ export default function DashboardPage() {
   return (
     <div className="flex">
       <Sidebar activeRoute="dashboard" />
-      <div className="flex-1">
-        <Navbar title="Dashboard Overview" />
+      
+      {/* --- FIXED THIS LINE --- */}
+      <div className="flex-1 ml-64"> 
+        <Navbar title="Dashboard Overview" showLanguageSelector={false} />
         <main className="p-6 md:p-8">
           <h2 className="text-3xl font-semibold mb-6 text-gray-800">
             Analytics Summary
           </h2>
+
+          {/* --- DELETED THE DUPLICATE H2 THAT WAS HERE --- */}
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -180,7 +183,7 @@ export default function DashboardPage() {
             <h3 className="text-xl font-medium mb-4 text-gray-800">
               Soil Suitability & Suggestions
             </h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Dropdown Selector */}
               <div className="md:col-span-1">

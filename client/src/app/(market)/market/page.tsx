@@ -120,8 +120,8 @@ export default function MarketPage() {
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-green-50 via-yellow-50 to-green-50">
       <Sidebar activeRoute="market" />
-      <div className="flex-1">
-        <Navbar title="Market Insights" />
+      <div className="flex-1 ml-80">
+        <Navbar title="Market Insights" showLanguageSelector={false} />
         <main className="p-4 md:p-8">
           {/* Header Section */}
           <div className="mb-6">
@@ -137,11 +137,10 @@ export default function MarketPage() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full font-medium whitespace-nowrap transition-all duration-200 ${
-                  selectedCategory === cat
-                    ? "bg-gradient-to-r from-green-500 to-yellow-500 text-white shadow-lg scale-105"
-                    : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
-                }`}
+                className={`px-4 py-2 rounded-full font-medium whitespace-nowrap transition-all duration-200 ${selectedCategory === cat
+                  ? "bg-gradient-to-r from-green-500 to-yellow-500 text-white shadow-lg scale-105"
+                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                  }`}
               >
                 {cat}
               </button>
@@ -170,11 +169,10 @@ export default function MarketPage() {
                     </p>
                   </div>
                   <span
-                    className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                      commodity.trend === "up"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-red-100 text-red-700"
-                    }`}
+                    className={`px-2 py-1 rounded-full text-xs font-semibold ${commodity.trend === "up"
+                      ? "bg-green-100 text-green-700"
+                      : "bg-red-100 text-red-700"
+                      }`}
                   >
                     {commodity.trend === "up" ? "↑" : "↓"}{" "}
                     {Math.abs(commodity.change)}%
@@ -353,11 +351,10 @@ export default function MarketPage() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
-                          className={`text-sm font-semibold ${
-                            commodity.trend === "up"
-                              ? "text-green-600"
-                              : "text-red-600"
-                          }`}
+                          className={`text-sm font-semibold ${commodity.trend === "up"
+                            ? "text-green-600"
+                            : "text-red-600"
+                            }`}
                         >
                           {commodity.trend === "up" ? "+" : "-"}
                           {Math.abs(commodity.change)}%
@@ -365,11 +362,10 @@ export default function MarketPage() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
-                          className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                            commodity.trend === "up"
-                              ? "bg-green-100 text-green-800"
-                              : "bg-red-100 text-red-800"
-                          }`}
+                          className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${commodity.trend === "up"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-red-100 text-red-800"
+                            }`}
                         >
                           {commodity.trend === "up" ? "↑ Rising" : "↓ Falling"}
                         </span>

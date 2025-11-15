@@ -1,9 +1,11 @@
 import './../styles/globals.css';
 import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
+import { LanguageProvider } from '@/lib/languageContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'AgriAssist Dashboard',
   description: 'An agricultural assistance and prediction platform.',
 };
@@ -17,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* You'd typically put shared wrappers/providers here */}
-        <div className="min-h-screen bg-gray-50">
-          {children}
-        </div>
+        <LanguageProvider>
+          {/* You'd typically put shared wrappers/providers here */}
+          <div className="min-h-screen bg-gray-50">
+            {children}
+          </div>
+        </LanguageProvider>
       </body>
     </html>
   );
