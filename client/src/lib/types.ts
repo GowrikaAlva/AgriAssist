@@ -68,3 +68,20 @@ export interface CropHealthResult {
   confidence: number; // The model's confidence score (0 to 1)
   recommendation: string;
 }
+
+/** Defines the structure for a chat session. */
+export interface ChatSession {
+  id: string; // Unique session ID
+  title: string; // Auto-generated title from first message
+  messages: ChatMessage[];
+  createdAt: number;
+  updatedAt: number;
+}
+
+/** Defines the structure for user authentication state. */
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  isLoggedIn: boolean;
+}
