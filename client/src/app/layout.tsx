@@ -1,9 +1,10 @@
 import './../styles/globals.css';
 import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'AgriAssist Dashboard',
   description: 'An agricultural assistance and prediction platform.',
 };
