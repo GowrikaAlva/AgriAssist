@@ -27,7 +27,7 @@ export default function Sidebar({ activeRoute }: SidebarProps) {
           height={70}
           className="rounded-full shadow-lg"
         />
-        <h1 className="text-3xl font-bold text-white mt-4">AgriAssist</h1>
+        <h1 className="text-3xl font-bold text-white mt-4 text-center">AgriAssist KrishiMitra</h1>
       </div>
 
       <nav className="flex flex-col space-y-3">
