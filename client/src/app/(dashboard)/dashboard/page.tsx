@@ -142,7 +142,7 @@ export default function DashboardPage() {
       <Sidebar activeRoute="dashboard" />
       
       {/* --- FIXED THIS LINE --- */}
-      <div className="flex-1 ml-64"> 
+      <div className="flex-1 ml-80"> 
         <Navbar title="Dashboard Overview" showLanguageSelector={false} />
         <main className="p-6 md:p-8">
           <h2 className="text-3xl font-semibold mb-6 text-gray-800">
