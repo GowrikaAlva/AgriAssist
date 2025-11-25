@@ -22,6 +22,7 @@ export function CropHealthCard() {
     }
   };
 
+  // ⭐⭐⭐ REAL MODEL BACKEND CALL (ONLY THIS PART CHANGED)
   const handleAnalyze = async () => {
     if (!file) {
       setError('Please select an image to analyze.');
@@ -32,38 +33,33 @@ export function CropHealthCard() {
     setError(null);
     setResult(null);
 
-    // Fake model for now
-    setTimeout(() => {
-      const dummyDiseases = [
-        {
-          disease: 'Leaf Blight',
-          recommendation:
-            'Remove infected leaves and apply a copper-based fungicide. Avoid overhead watering and ensure good air circulation.',
-        },
-        {
-          disease: 'Powdery Mildew',
-          recommendation:
-            'Spray sulfur-based fungicide and ensure proper sunlight exposure. Remove heavily infected leaves.',
-        },
-        {
-          disease: 'Rust',
-          recommendation:
-            'Apply neem-based fungicide and maintain crop spacing to reduce humidity around plants.',
-        },
-      ];
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
 
-      const randomIndex = Math.floor(Math.random() * dummyDiseases.length);
-      const selected = dummyDiseases[randomIndex];
+      const res = await fetch("/api/health/classify", {
+        method: "POST",
+        body: formData
+      });
 
-      const dummyResult: CropHealthResult = {
-        disease: selected.disease,
-        confidence: +(0.85 + Math.random() * 0.1).toFixed(2),
-        recommendation: selected.recommendation,
-      };
+      const data = await res.json();
 
-      setResult(dummyResult);
-      setIsLoading(false);
-    }, 2000);
+      if (!res.ok) {
+        setError(data.error || "Something went wrong");
+        setIsLoading(false);
+        return;
+      }
+
+      setResult({
+        disease: data.disease,
+        confidence: data.confidence,
+        recommendation: data.recommendation
+      });
+    } catch (err) {
+      setError("Failed to analyze image");
+    }
+
+    setIsLoading(false);
   };
 
   return (
